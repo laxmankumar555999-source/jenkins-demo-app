@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-demo-app
+  labels:
+    app: jenkins-demo-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jenkins-demo-app
+  template:
+    metadata:
+      labels:
+        app: jenkins-demo-app
+    spec:
+      containers:
+        - name: jenkins-demo-app
+          image: 295106182302.dkr.ecr.ap-southeast-2.amazonaws.com/jenkins-demo-app:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
